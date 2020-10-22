@@ -1,0 +1,30 @@
+html {
+    background: rgb(37, 37, 37);
+    overflow: hidden;
+}
+
+.points {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 20px;
+    background: rgb(24, 24, 24);
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+}
+
+.snake {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: rgb(190, 189, 189);
+}
+
+.randomPoint {
+    position: absolute;
+    background: red;
+    width: 15px;
+    height: 15px;
+}
