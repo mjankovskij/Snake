@@ -1,6 +1,3 @@
-// posX = document.querySelector('.snake').offsetLeft;
-// posY = document.querySelector('.snake').offsetTop;
-// console.log(posX, posY);
 const step = 15;
 const snakeSpeed = 200;
 onkeyup = (event) => {
@@ -63,15 +60,11 @@ function move(where) {
         wayTo.marginTop = `${marginTop+step}px`;
     }
 
-    posX = document.querySelector('.snake').offsetLeft;
-    posY = document.querySelector('.snake').offsetTop;
-    console.log(posX, posY);
 }
 
 function genRandomPoint() {
     const windowHeight = window.innerHeight;
     const windowWidth = window.innerWidth;
-    console.log('h', windowHeight, 'w', windowWidth);
     let randomHeight = Math.floor(Math.random() * (windowHeight - 100));
     let randomWidth = Math.floor(Math.random() * (windowWidth - 100));
     if (randomHeight < 100) { randomHeight *= 2; }
