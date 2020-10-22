@@ -11,11 +11,27 @@ onkeyup = (event) => {
     }
     if (event.keyCode == 39) {
         setInterval(function action() { move('right') }, snakeSpeed);
-
     }
     if (event.keyCode == 40) {
         setInterval(function action() { move('down') }, snakeSpeed);
 
+    }
+}
+
+function mobileControl(key) {
+    (function(w) { w = w || window; var i = w.setInterval(function() {}, 100000); while (i >= 0) { w.clearInterval(i--); } })( /*window*/ );
+
+    if (key == 'left') {
+        setInterval(function action() { move('left') }, snakeSpeed);
+    }
+    if (key == 'up') {
+        setInterval(function action() { move('up') }, snakeSpeed);
+    }
+    if (key == 'right') {
+        setInterval(function action() { move('right') }, snakeSpeed);
+    }
+    if (key == 'down') {
+        setInterval(function action() { move('down') }, snakeSpeed);
     }
 }
 
@@ -78,5 +94,8 @@ function genRandomPoint() {
     wayTo.marginTop = `${randomHeight}px`;
     wayTo.marginLeft = `${randomWidth}px`;
 }
-
 genRandomPoint();
+
+if (window.innerWidth < 500) {
+    console.log('mazas');
+}
