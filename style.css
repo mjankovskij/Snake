@@ -38,6 +38,7 @@ html {
     border-radius: 50%;
     transform: rotate(50deg);
     color: #fff;
+    display: none;
 }
 
 .mobileControl>.up {

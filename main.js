@@ -97,5 +97,13 @@ function genRandomPoint() {
 genRandomPoint();
 
 if (window.innerWidth < 500) {
-    console.log('mazas');
+    document.querySelector('.mobileControl').style.display = "block";
+}
+
+window.onresize = () => {
+    if (window.innerWidth < 500) {
+        document.querySelector('.mobileControl').style.display = "block";
+    } else {
+        document.querySelector('.mobileControl').style.display = "none";
+    }
 }
