@@ -64,7 +64,6 @@ function chooseControler(which) {
 }
 
 function mobileControl(key) {
-    console.log('Go:', key);
     let directionNew = '';
     if (key == 'left') {
         directionNew = 'right';
