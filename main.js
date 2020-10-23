@@ -29,6 +29,30 @@ onkeyup = (event) => {
 }
 
 
+// console.log(window.touches);
+document.addEventListener("touchstart", () => {
+    const touchY = event.touches[0].clientY;
+    const touchX = event.touches[0].clientX;
+
+    if (window.innerHeight / 6 > touchY) {
+        mobileControl('up')
+    }
+    if (window.innerHeight / 6 * 5 > touchY) {
+        if (touchY > window.innerHeight / 6) {
+            if (window.innerWidth / 2 < touchX) {
+                mobileControl('right')
+            }
+            if (window.innerWidth / 2 > touchX) {
+                mobileControl('left')
+            }
+        }
+    }
+
+    if (window.innerHeight / 6 * 5 < touchY) {
+        mobileControl('down')
+    }
+    // console.log(touchY, touchX);
+});
 // document.addEventListener("touchstart", () => { mobileControl('up') });
 // // body.addEventListener("touchmove", handleMove);
 // document.addEventListener("touchend", () => { mobileControl('end') });
@@ -36,7 +60,7 @@ onkeyup = (event) => {
 // body.addEventListener("touchcancel", handleCancel);
 
 function mobileControl(key) {
-    console.log('Go:', key);
+    // console.log('Go:', key);
     let directionNew = '';
     if (key == 'left') {
         directionNew = 'right';
@@ -148,12 +172,12 @@ function genRandomPoint() {
 genRandomPoint();
 
 if (window.innerWidth < 500) {
-    document.querySelector('.mobileControl').style.display = "block";
+    document.querySelector('.mobileControl').style.display = "none"; //block
 }
 
 window.onresize = () => {
     if (window.innerWidth < 500) {
-        document.querySelector('.mobileControl').style.display = "block";
+        document.querySelector('.mobileControl').style.display = "none"; //block
     } else {
         document.querySelector('.mobileControl').style.display = "none";
     }
