@@ -2,51 +2,52 @@ const step = 15;
 const snakeSpeed = 100;
 onkeyup = (event) => {
 
-    if (event.keyCode == 37 && document.querySelector('.lastDirection').textContent !== 'right') {
-        (function(w) { w = w || window; var i = w.setInterval(function() {}, 100000); while (i >= 0) { w.clearInterval(i--); } })( /*window*/ );
-        document.querySelector('.lastDirection').innerHTML = 'left';
-        setInterval(function action() { move('left') }, snakeSpeed);
-    }
-    if (event.keyCode == 38 && document.querySelector('.lastDirection').textContent !== 'down') {
-        (function(w) { w = w || window; var i = w.setInterval(function() {}, 100000); while (i >= 0) { w.clearInterval(i--); } })( /*window*/ );
-        document.querySelector('.lastDirection').innerHTML = 'up';
-        setInterval(function action() { move('up') }, snakeSpeed);
-    }
-    if (event.keyCode == 39 && document.querySelector('.lastDirection').textContent !== 'left') {
-        (function(w) { w = w || window; var i = w.setInterval(function() {}, 100000); while (i >= 0) { w.clearInterval(i--); } })( /*window*/ );
-        document.querySelector('.lastDirection').innerHTML = 'right';
-        setInterval(function action() { move('right') }, snakeSpeed);
-    }
-    if (event.keyCode == 40 && document.querySelector('.lastDirection').textContent !== 'up') {
-        (function(w) { w = w || window; var i = w.setInterval(function() {}, 100000); while (i >= 0) { w.clearInterval(i--); } })( /*window*/ );
-        document.querySelector('.lastDirection').innerHTML = 'down';
-        setInterval(function action() { move('down') }, snakeSpeed);
+    let direction = '';
+    let directionNew = '';
 
+    if (event.keyCode == 37) {
+        direction = 'left';
+        directionNew = 'right';
+    }
+    if (event.keyCode == 38) {
+        direction = 'up';
+        directionNew = 'down';
+    }
+    if (event.keyCode == 39) {
+        direction = 'right';
+        directionNew = 'left';
+    }
+    if (event.keyCode == 40) {
+        direction = 'down';
+        directionNew = 'up';
+    }
+    if (direction != document.querySelector('.lastDirection').textContent) {
+        (function(w) { w = w || window; var i = w.setInterval(function() {}, 100000); while (i >= 0) { w.clearInterval(i--); } })( /*window*/ );
+        setInterval(function action() { move(direction) }, snakeSpeed);
+        document.querySelector('.lastDirection').innerHTML = directionNew;
     }
 }
 
 function mobileControl(key) {
-    (function(w) { w = w || window; var i = w.setInterval(function() {}, 100000); while (i >= 0) { w.clearInterval(i--); } })( /*window*/ );
+    console.log('Go:', key);
+    let directionNew = '';
+    if (key == 'left') {
+        directionNew = 'right';
+    }
+    if (key == 'up') {
+        directionNew = 'down';
+    }
+    if (key == 'right') {
+        directionNew = 'left';
 
-    if (key == 'left' && document.querySelector('.lastDirection').textContent !== 'right') {
-        (function(w) { w = w || window; var i = w.setInterval(function() {}, 100000); while (i >= 0) { w.clearInterval(i--); } })( /*window*/ );
-        document.querySelector('.lastDirection').innerHTML = 'left';
-        setInterval(function action() { move('left') }, snakeSpeed);
     }
-    if (key == 'up' && document.querySelector('.lastDirection').textContent !== 'down') {
-        (function(w) { w = w || window; var i = w.setInterval(function() {}, 100000); while (i >= 0) { w.clearInterval(i--); } })( /*window*/ );
-        document.querySelector('.lastDirection').innerHTML = 'up';
-        setInterval(function action() { move('up') }, snakeSpeed);
+    if (key == 'down') {
+        directionNew = 'up';
     }
-    if (key == 'right' && document.querySelector('.lastDirection').textContent !== 'left') {
+    if (key != document.querySelector('.lastDirection').textContent) {
         (function(w) { w = w || window; var i = w.setInterval(function() {}, 100000); while (i >= 0) { w.clearInterval(i--); } })( /*window*/ );
-        document.querySelector('.lastDirection').innerHTML = 'right';
-        setInterval(function action() { move('right') }, snakeSpeed);
-    }
-    if (key == 'down' && document.querySelector('.lastDirection').textContent !== 'up') {
-        (function(w) { w = w || window; var i = w.setInterval(function() {}, 100000); while (i >= 0) { w.clearInterval(i--); } })( /*window*/ );
-        document.querySelector('.lastDirection').innerHTML = 'down';
-        setInterval(function action() { move('down') }, snakeSpeed);
+        setInterval(function action() { move(key) }, snakeSpeed);
+        document.querySelector('.lastDirection').innerHTML = directionNew;
     }
 }
 
@@ -54,8 +55,6 @@ function move(where) {
     const wayTo = document.querySelector('.snake').style;
     const wayToPoint = document.querySelector('.randomPoint').style;
     const tail = document.querySelectorAll('.tail');
-
-
     if (Number(wayTo.marginLeft.replace('px', '')) + 10 > Number(wayToPoint.marginLeft.replace('px', ''))) {
         if (Number(wayToPoint.marginLeft.replace('px', '')) > Number(wayTo.marginLeft.replace('px', '')) - 10) {
 
@@ -70,38 +69,34 @@ function move(where) {
             }
         }
     }
-
-
-
     const windowHeight = window.innerHeight;
     const windowWidth = window.innerWidth;
 
     if (where == 'left') {
         let marginLeft = Number(wayTo.marginLeft.replace('px', ''));
-        if (marginLeft < 0) { marginLeft = windowWidth - step - 2; }
+        if (marginLeft < 0) { marginLeft = windowWidth; }
         wayTo.marginLeft = `${marginLeft-step}px`;
     }
 
     if (where == 'up') {
         let marginTop = Number(wayTo.marginTop.replace('px', ''));
-        if (marginTop < 0) { marginTop = windowHeight - step - 2; }
+        if (marginTop < 0) { marginTop = windowHeight; }
         wayTo.marginTop = `${marginTop-step}px`;
     }
 
     if (where == 'right') {
         let marginLeft = Number(wayTo.marginLeft.replace('px', ''));
-        if (marginLeft > windowWidth - step * 3) { marginLeft = -step * 2; }
+        if (marginLeft > windowWidth - step) { marginLeft = -step * 2; }
         wayTo.marginLeft = `${marginLeft+step}px`;
     }
 
     if (where == 'down') {
         let marginTop = Number(wayTo.marginTop.replace('px', ''));
-        if (marginTop > windowHeight - step * 3) { marginTop = -step * 2; }
+        if (marginTop > windowHeight - step) { marginTop = -step * 2; }
         wayTo.marginTop = `${marginTop+step}px`;
     }
     const leftTail = wayTo.marginLeft;
     const topTail = wayTo.marginTop;
-
     let currentScore = document.querySelector('.points').textContent;
     currentScore = Number(currentScore);
     if (document.querySelectorAll('.tail').length - 2 > currentScore) {
@@ -121,7 +116,6 @@ function move(where) {
             document.querySelector('.gameOver').style.display = 'block';
             document.querySelector('.gameOver').innerHTML = `Game over.<br> Your score: ${scoreEnd}
             <br> Click anywhere to try again.`;
-
         }
     }
 }
