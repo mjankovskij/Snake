@@ -19,7 +19,8 @@ html {
     position: absolute;
     width: 15px;
     height: 15px;
-    background: rgb(190, 189, 189);
+    background: rgb(94, 75, 75);
+    z-index: 1;
 }
 
 .randomPoint {
@@ -27,6 +28,13 @@ html {
     background: red;
     width: 15px;
     height: 15px;
+}
+
+.tail {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: rgb(190, 189, 189);
 }
 
 .mobileControl {

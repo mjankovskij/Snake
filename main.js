@@ -1,5 +1,5 @@
 const step = 15;
-const snakeSpeed = 200;
+const snakeSpeed = 100;
 onkeyup = (event) => {
     (function(w) { w = w || window; var i = w.setInterval(function() {}, 100000); while (i >= 0) { w.clearInterval(i--); } })( /*window*/ );
 
@@ -74,6 +74,16 @@ function move(where) {
         let marginTop = Number(wayTo.marginTop.replace('px', ''));
         if (marginTop > windowHeight - step * 3) { marginTop = -step * 2; }
         wayTo.marginTop = `${marginTop+step}px`;
+    }
+    const leftTail = wayTo.marginLeft;
+    const topTail = wayTo.marginTop;
+    document.body.innerHTML += `<div class="tail"
+    style="margin-left:${leftTail}; margin-top:${topTail}"></div>`;
+
+    let currentScore = document.querySelector('.points').textContent;
+    currentScore = Number(currentScore);
+    if (document.querySelectorAll('.tail').length - 3 > currentScore) {
+        document.querySelectorAll('.tail')[0].remove();
     }
 
 }
