@@ -28,6 +28,14 @@ onkeyup = (event) => {
     }
 }
 
+
+
+document.addEventListener("touchstart", () => { mobileControl('up') });
+// body.addEventListener("touchmove", handleMove);
+document.addEventListener("touchend", () => { mobileControl('end') });
+// document.addEventListener("touchend", mobileControl('end'));
+// body.addEventListener("touchcancel", handleCancel);
+
 function mobileControl(key) {
     console.log('Go:', key);
     let directionNew = '';
@@ -86,13 +94,13 @@ function move(where) {
 
     if (where == 'right') {
         let marginLeft = Number(wayTo.marginLeft.replace('px', ''));
-        if (marginLeft > windowWidth - step) { marginLeft = -step * 2; }
+        if (marginLeft + step * 2 > windowWidth) { marginLeft = -step * 2; }
         wayTo.marginLeft = `${marginLeft+step}px`;
     }
 
     if (where == 'down') {
         let marginTop = Number(wayTo.marginTop.replace('px', ''));
-        if (marginTop > windowHeight - step) { marginTop = -step * 2; }
+        if (marginTop + step * 2 > windowHeight) { marginTop = -step * 2; }
         wayTo.marginTop = `${marginTop+step}px`;
     }
     const leftTail = wayTo.marginLeft;
