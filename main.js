@@ -28,11 +28,14 @@ onkeyup = (e) => {
     }
 }
 
+if (window.innerWidth < 700) {
+    document.querySelector('.chooseControler').style.display = 'block';
+
+}
+
 function chooseControler(which) {
     if (which == 1) {
-        if (window.innerWidth < 500) {
-            document.querySelector('.mobileControl').style.display = "block"; //block
-        }
+        document.querySelector('.mobileControl').style.display = "block"; //block
     }
 
     if (which == 2) {
