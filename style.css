@@ -117,3 +117,26 @@ p {
     display: none;
     cursor: pointer;
 }
+
+.chooseControler {
+    position: absolute;
+    text-align: center;
+    background: rgb(71, 70, 70);
+    color: #fff;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-top: 30%;
+    z-index: 2;
+}
+
+.chooseControler img:first-of-type {
+    width: 100px;
+    height: 100px;
+}
+
+.chooseControler img:last-of-type {
+    width: 100px;
+    height: 150px;
+}

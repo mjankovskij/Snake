@@ -1,23 +1,23 @@
 const step = 15;
 const snakeSpeed = 100;
-onkeyup = (event) => {
-
+let where = 'up';
+onkeyup = (e) => {
     let direction = '';
     let directionNew = '';
 
-    if (event.keyCode == 37) {
+    if (e.keyCode == 37) {
         direction = 'left';
         directionNew = 'right';
     }
-    if (event.keyCode == 38) {
+    if (e.keyCode == 38) {
         direction = 'up';
         directionNew = 'down';
     }
-    if (event.keyCode == 39) {
+    if (e.keyCode == 39) {
         direction = 'right';
         directionNew = 'left';
     }
-    if (event.keyCode == 40) {
+    if (e.keyCode == 40) {
         direction = 'down';
         directionNew = 'up';
     }
@@ -28,39 +28,43 @@ onkeyup = (event) => {
     }
 }
 
-
-// console.log(window.touches);
-document.addEventListener("touchstart", () => {
-    const touchY = event.touches[0].clientY;
-    const touchX = event.touches[0].clientX;
-
-    if (window.innerHeight / 6 > touchY) {
-        mobileControl('up')
-    }
-    if (window.innerHeight / 6 * 5 > touchY) {
-        if (touchY > window.innerHeight / 6) {
-            if (window.innerWidth / 2 < touchX) {
-                mobileControl('right')
-            }
-            if (window.innerWidth / 2 > touchX) {
-                mobileControl('left')
-            }
+function chooseControler(which) {
+    if (which == 1) {
+        if (window.innerWidth < 500) {
+            document.querySelector('.mobileControl').style.display = "block"; //block
         }
     }
 
-    if (window.innerHeight / 6 * 5 < touchY) {
-        mobileControl('down')
+    if (which == 2) {
+        document.addEventListener("click", (e) => {
+            console.log(e);
+            const touchY = e.clientY;
+            const touchX = e.clientX;
+
+            if (window.innerHeight / 6 > touchY) {
+                mobileControl('up')
+            }
+            if (window.innerHeight / 6 * 5 > touchY) {
+                if (touchY > window.innerHeight / 6) {
+                    if (window.innerWidth / 2 < touchX) {
+                        mobileControl('right')
+                    }
+                    if (window.innerWidth / 2 > touchX) {
+                        mobileControl('left')
+                    }
+                }
+            }
+
+            if (window.innerHeight / 6 * 5 < touchY) {
+                mobileControl('down')
+            }
+        });
     }
-    // console.log(touchY, touchX);
-});
-// document.addEventListener("touchstart", () => { mobileControl('up') });
-// // body.addEventListener("touchmove", handleMove);
-// document.addEventListener("touchend", () => { mobileControl('end') });
-// document.addEventListener("touchend", mobileControl('end'));
-// body.addEventListener("touchcancel", handleCancel);
+    document.querySelector('.chooseControler').style.display = 'none';
+}
 
 function mobileControl(key) {
-    // console.log('Go:', key);
+    console.log('Go:', key);
     let directionNew = '';
     if (key == 'left') {
         directionNew = 'right';
@@ -134,7 +138,7 @@ function move(where) {
         document.querySelectorAll('.tail')[0].remove();
     }
 
-    document.body.innerHTML += `<div class="tail"
+    document.querySelector('main').innerHTML += `<div class="tail"
     style="margin-left:${leftTail}; margin-top:${topTail}"></div>`;
 
     for (let i = 0; i < tail.length; i++) {
@@ -172,18 +176,6 @@ function genRandomPoint() {
     wayTo.marginLeft = `${randomWidth}px`;
 }
 genRandomPoint();
-
-if (window.innerWidth < 500) {
-    document.querySelector('.mobileControl').style.display = "none"; //block
-}
-
-window.onresize = () => {
-    if (window.innerWidth < 500) {
-        document.querySelector('.mobileControl').style.display = "none"; //block
-    } else {
-        document.querySelector('.mobileControl').style.display = "none";
-    }
-}
 
 function resetGame() {
     const delObjectsLength = document.querySelectorAll('.tail').length;
