@@ -38,13 +38,26 @@ function mobileControl(key) {
 function move(where) {
     const wayTo = document.querySelector('.snake').style;
     const wayToPoint = document.querySelector('.randomPoint').style;
-    if (wayTo.marginLeft == wayToPoint.marginLeft && wayTo.marginTop == wayToPoint.marginTop) {
 
 
-        let currentScore = document.querySelector('.points').textContent;
-        currentScore = Number(currentScore) + 1;
-        document.querySelector('.points').innerHTML = currentScore;
-        genRandomPoint();
+    if (Number(wayTo.marginLeft.replace('px', '')) + 10 > Number(wayToPoint.marginLeft.replace('px', ''))) {
+        if (Number(wayToPoint.marginLeft.replace('px', '')) > Number(wayTo.marginLeft.replace('px', '')) - 10) {
+
+            if (Number(wayTo.marginTop.replace('px', '')) + 10 > Number(wayToPoint.marginTop.replace('px', ''))) {
+                if (Number(wayToPoint.marginTop.replace('px', '')) > Number(wayTo.marginTop.replace('px', '')) - 10) {
+
+
+                    // if (wayTo.marginLeft + 5 > wayToPoint.marginLeft > wayTo.marginLeft - 5 &&
+
+                    // wayTo.marginTop == wayToPoint.marginTop) {
+
+                    let currentScore = document.querySelector('.points').textContent;
+                    currentScore = Number(currentScore) + 1;
+                    document.querySelector('.points').innerHTML = currentScore;
+                    genRandomPoint();
+                }
+            }
+        }
     }
 
 
@@ -91,13 +104,13 @@ function move(where) {
 function genRandomPoint() {
     const windowHeight = window.innerHeight;
     const windowWidth = window.innerWidth;
-    let randomHeight = Math.floor(Math.random() * (windowHeight - 100));
-    let randomWidth = Math.floor(Math.random() * (windowWidth - 100));
-    if (randomHeight < 100) { randomHeight *= 2; }
-    if (randomWidth < 100) { randomWidth *= 2; }
+    // let randomHeight = Math.floor(Math.random() * (windowHeight - 100));
+    // let randomWidth = Math.floor(Math.random() * (windowWidth - 100));
+    // if (randomHeight < 100) { randomHeight *= 2; }
+    // if (randomWidth < 100) { randomWidth *= 2; }
     // test mode
-    // let randomHeight = Math.floor(Math.random() * (20));
-    // let randomWidth = Math.floor(Math.random() * (20));
+    let randomHeight = Math.floor(Math.random() * (50));
+    let randomWidth = Math.floor(Math.random() * (50));
     while (randomHeight % step !== 0) { randomHeight++; }
     while (randomWidth % step !== 0) { randomWidth++; }
     const wayTo = document.querySelector('.randomPoint').style;

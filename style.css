@@ -1,5 +1,5 @@
 html {
-    background: rgb(37, 37, 37);
+    background: #252525;
     overflow: hidden;
 }
 
@@ -9,7 +9,7 @@ html {
     right: 0;
     width: 50px;
     height: 20px;
-    background: rgb(24, 24, 24);
+    background: #181818;
     color: #fff;
     padding: 5px;
     text-align: center;
@@ -19,7 +19,7 @@ html {
     position: absolute;
     width: 15px;
     height: 15px;
-    background: rgb(94, 75, 75);
+    background: #5e4b4b;
     z-index: 1;
 }
 
@@ -28,13 +28,16 @@ html {
     background: red;
     width: 15px;
     height: 15px;
+    box-sizing: border-box;
+    border: solid 3px #252525;
+    border-radius: 5px;
 }
 
 .tail {
     position: absolute;
     width: 15px;
     height: 15px;
-    background: rgb(190, 189, 189);
+    background: #bebdbd;
 }
 
 .mobileControl {
