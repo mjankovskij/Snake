@@ -104,7 +104,7 @@ function move(where) {
 
     let currentScore = document.querySelector('.points').textContent;
     currentScore = Number(currentScore);
-    if (document.querySelectorAll('.tail').length - 20 > currentScore) {
+    if (document.querySelectorAll('.tail').length - 2 > currentScore) {
         document.querySelectorAll('.tail')[0].remove();
     }
 
