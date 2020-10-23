@@ -104,13 +104,15 @@ function move(where) {
 function genRandomPoint() {
     const windowHeight = window.innerHeight;
     const windowWidth = window.innerWidth;
-    // let randomHeight = Math.floor(Math.random() * (windowHeight - 100));
-    // let randomWidth = Math.floor(Math.random() * (windowWidth - 100));
-    // if (randomHeight < 100) { randomHeight *= 2; }
-    // if (randomWidth < 100) { randomWidth *= 2; }
+    // norm mode
+    let randomHeight = Math.floor(Math.random() * (windowHeight - 100));
+    let randomWidth = Math.floor(Math.random() * (windowWidth - 100));
+    if (randomHeight < 100) { randomHeight *= 2; }
+    if (randomWidth < 100) { randomWidth *= 2; }
     // test mode
-    let randomHeight = Math.floor(Math.random() * (50));
-    let randomWidth = Math.floor(Math.random() * (50));
+    // let randomHeight = Math.floor(Math.random() * (50));
+    // let randomWidth = Math.floor(Math.random() * (50));
+    //
     while (randomHeight % step !== 0) { randomHeight++; }
     while (randomWidth % step !== 0) { randomWidth++; }
     const wayTo = document.querySelector('.randomPoint').style;
