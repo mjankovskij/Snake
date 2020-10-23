@@ -29,10 +29,9 @@ onkeyup = (event) => {
 }
 
 
-
-document.addEventListener("touchstart", () => { mobileControl('up') });
-// body.addEventListener("touchmove", handleMove);
-document.addEventListener("touchend", () => { mobileControl('end') });
+// document.addEventListener("touchstart", () => { mobileControl('up') });
+// // body.addEventListener("touchmove", handleMove);
+// document.addEventListener("touchend", () => { mobileControl('end') });
 // document.addEventListener("touchend", mobileControl('end'));
 // body.addEventListener("touchcancel", handleCancel);
 

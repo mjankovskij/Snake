@@ -35,7 +35,7 @@ html {
 
 .randomPoint {
     position: absolute;
-    background: blue;
+    background: red;
     width: 15px;
     height: 15px;
     box-sizing: border-box;
