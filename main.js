@@ -120,7 +120,7 @@ function move(where) {
             const scoreEnd = document.querySelector('.points').textContent;
             document.querySelector('.gameOver').style.display = 'block';
             document.querySelector('.gameOver').innerHTML = `Game over.<br> Your score: ${scoreEnd}
-            <br> To try again click here.`;
+            <br> Click anywhere to try again.`;
 
         }
     }
