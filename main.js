@@ -159,6 +159,8 @@ function genRandomPoint() {
     let randomWidth = Math.floor(Math.random() * (windowWidth - 100));
     if (randomHeight < 100) { randomHeight *= 2; }
     if (randomWidth < 100) { randomWidth *= 2; }
+    if (randomHeight - 100 > windowHeight) { randomHeight / 2; }
+    if (randomWidth - 100 > windowWidth) { randomWidth / 2; }
     // test mode
     // let randomHeight = Math.floor(Math.random() * (50));
     // let randomWidth = Math.floor(Math.random() * (50));
