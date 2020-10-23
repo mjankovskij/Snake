@@ -38,6 +38,7 @@ function mobileControl(key) {
 function move(where) {
     const wayTo = document.querySelector('.snake').style;
     const wayToPoint = document.querySelector('.randomPoint').style;
+    const tail = document.querySelectorAll('.tail');
 
 
     if (Number(wayTo.marginLeft.replace('px', '')) + 10 > Number(wayToPoint.marginLeft.replace('px', ''))) {
@@ -45,11 +46,6 @@ function move(where) {
 
             if (Number(wayTo.marginTop.replace('px', '')) + 10 > Number(wayToPoint.marginTop.replace('px', ''))) {
                 if (Number(wayToPoint.marginTop.replace('px', '')) > Number(wayTo.marginTop.replace('px', '')) - 10) {
-
-
-                    // if (wayTo.marginLeft + 5 > wayToPoint.marginLeft > wayTo.marginLeft - 5 &&
-
-                    // wayTo.marginTop == wayToPoint.marginTop) {
 
                     let currentScore = document.querySelector('.points').textContent;
                     currentScore = Number(currentScore) + 1;
@@ -90,15 +86,23 @@ function move(where) {
     }
     const leftTail = wayTo.marginLeft;
     const topTail = wayTo.marginTop;
-    document.body.innerHTML += `<div class="tail"
-    style="margin-left:${leftTail}; margin-top:${topTail}"></div>`;
 
     let currentScore = document.querySelector('.points').textContent;
     currentScore = Number(currentScore);
-    if (document.querySelectorAll('.tail').length - 3 > currentScore) {
+    if (document.querySelectorAll('.tail').length - 2 > currentScore) {
         document.querySelectorAll('.tail')[0].remove();
     }
 
+    document.body.innerHTML += `<div class="tail"
+    style="margin-left:${leftTail}; margin-top:${topTail}"></div>`;
+
+    for (let i = 0; i < tail.length; i++) {
+        if (wayTo.marginLeft == tail[i].style.marginLeft && wayTo.marginTop == tail[i].style.marginTop) {
+            // GAME OVER
+            console.log('Game over');
+
+        }
+    }
 }
 
 function genRandomPoint() {
