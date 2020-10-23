@@ -53,8 +53,8 @@ html {
     display: inline-block;
     background: rgb(59, 59, 59);
     border-top-left-radius: 100%;
-    width: 46%;
-    height: 50%;
+    width: 45%;
+    height: 45%;
     border: solid 1px rgb(78, 76, 76);
 }
 
@@ -62,9 +62,8 @@ html {
     display: inline-block;
     background: rgb(59, 59, 59);
     border-top-right-radius: 100%;
-    width: 46%;
-    height: 50%;
-    margin-left: -1px;
+    width: 45%;
+    height: 45%;
     border: solid 1px rgb(78, 76, 76);
 }
 
@@ -72,8 +71,8 @@ html {
     display: inline-block;
     background: rgb(59, 59, 59);
     border-bottom-left-radius: 100%;
-    width: 46%;
-    height: 50%;
+    width: 45%;
+    height: 45%;
     border: solid 1px rgb(78, 76, 76);
 }
 
@@ -81,9 +80,8 @@ html {
     display: inline-block;
     background: rgb(59, 59, 59);
     border-bottom-right-radius: 100%;
-    width: 46%;
-    height: 50%;
-    margin-left: -1px;
+    width: 45%;
+    height: 45%;
     border: solid 1px rgb(78, 76, 76);
 }
 
